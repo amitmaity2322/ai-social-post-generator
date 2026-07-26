@@ -1,13 +1,56 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --pg-primary: #6d28d9;
+  --pg-primary-dark: #5b21b6;
+  --pg-primary-light: #ede9fe;
+  --pg-accent: #0ea5e9;
+  --pg-success: #16a34a;
+  --pg-danger: #dc2626;
+  --pg-warning: #d97706;
+
+  --pg-bg: #f7f7fb;
+  --pg-surface: #ffffff;
+  --pg-border: #e5e7eb;
+  --pg-text: #111827;
+  --pg-text-muted: #6b7280;
+
+  --pg-radius-sm: 8px;
+  --pg-radius-md: 12px;
+  --pg-radius-lg: 18px;
+
+  --pg-shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.06);
+  --pg-shadow-md: 0 4px 16px rgba(17, 24, 39, 0.08);
+  --pg-shadow-lg: 0 12px 32px rgba(17, 24, 39, 0.12);
+
+  --pg-sidebar-width: 260px;
+  --pg-topbar-height: 64px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --pg-primary: #8b5cf6;
+  --pg-primary-dark: #c4b5fd;
+  --pg-primary-light: rgba(139, 92, 246, 0.18);
+  --pg-accent: #38bdf8;
+  --pg-success: #22c55e;
+  --pg-danger: #f87171;
+  --pg-warning: #fbbf24;
+
+  --pg-bg: #0f0f14;
+  --pg-surface: #1a1a22;
+  --pg-border: #2c2c38;
+  --pg-text: #f3f4f6;
+  --pg-text-muted: #9ca3af;
+
+  --pg-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --pg-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --pg-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html,
@@ -17,17 +60,13 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--pg-text);
+  background: var(--pg-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 a {
@@ -35,8 +74,152 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.pg-surface {
+  background: var(--pg-surface);
+  border: 1px solid var(--pg-border);
+  border-radius: var(--pg-radius-md);
+  box-shadow: var(--pg-shadow-sm);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pg-text-muted {
+  color: var(--pg-text-muted);
+}
+
+.pg-gradient-hero {
+  background:
+    radial-gradient(circle at top left, var(--pg-primary-light), transparent 55%),
+    linear-gradient(180deg, var(--pg-surface) 0%, var(--pg-bg) 100%);
+}
+
+.pg-brand-gradient {
+  background: linear-gradient(135deg, var(--pg-primary), var(--pg-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+}
+
+.pg-focus-ring:focus-visible {
+  outline: 2px solid var(--pg-primary);
+  outline-offset: 2px;
+}
+
+.pg-scroll-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.pg-scroll-thin::-webkit-scrollbar-thumb {
+  background: var(--pg-border);
+  border-radius: 999px;
+}
+
+/* Glassmorphism Effect */
+.pg-glass {
+  background: rgba(var(--pg-surface-rgb, 255, 255, 255), 0.7) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(var(--pg-primary-rgb, 109, 40, 217), 0.08);
+}
+
+:root[data-theme="dark"] .pg-glass {
+  background: rgba(26, 26, 34, 0.65) !important;
+  border: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+/* SaaS Grid Background Pattern */
+.pg-grid-bg {
+  position: relative;
+}
+
+.pg-grid-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at top, var(--pg-primary-light) 0%, transparent 60%),
+    linear-gradient(to right, var(--pg-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--pg-border) 1px, transparent 1px);
+  background-size: 100% 100%, 56px 56px, 56px 56px;
+  background-position: center top;
+  opacity: 0.45;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+}
+
+:root[data-theme="dark"] .pg-grid-bg::before {
+  opacity: 0.25;
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
   }
 }
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Shimmer overlay class */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.4) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2.5s infinite;
+}
+

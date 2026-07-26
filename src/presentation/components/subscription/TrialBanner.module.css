@@ -1,0 +1,65 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--pg-radius-md);
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+}
+
+.trialing {
+  background: color-mix(in srgb, var(--pg-primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pg-primary) 24%, transparent);
+  color: var(--pg-text);
+}
+
+.expired {
+  background: color-mix(in srgb, var(--pg-warning) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pg-warning) 34%, transparent);
+  color: var(--pg-text);
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.trialing .text i {
+  color: var(--pg-primary);
+}
+
+.expired .text i {
+  color: var(--pg-warning);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  color: var(--pg-primary);
+  white-space: nowrap;
+}
+
+.dismiss {
+  border: none;
+  background: transparent;
+  color: var(--pg-text-muted);
+  padding: 0.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.dismiss:hover {
+  color: var(--pg-text);
+}

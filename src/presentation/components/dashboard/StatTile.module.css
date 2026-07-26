@@ -1,0 +1,72 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.125rem;
+  height: 100%;
+}
+
+.top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: var(--pg-radius-md);
+  font-size: 1.125rem;
+}
+
+.icon.primary {
+  background: var(--pg-primary-light);
+  color: var(--pg-primary);
+}
+
+.icon.accent {
+  background: color-mix(in srgb, var(--pg-accent) 15%, transparent);
+  color: var(--pg-accent);
+}
+
+.icon.success {
+  background: color-mix(in srgb, var(--pg-success) 15%, transparent);
+  color: var(--pg-success);
+}
+
+.icon.warning {
+  background: color-mix(in srgb, var(--pg-warning) 15%, transparent);
+  color: var(--pg-warning);
+}
+
+.icon.danger {
+  background: color-mix(in srgb, var(--pg-danger) 15%, transparent);
+  color: var(--pg-danger);
+}
+
+.trend {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--pg-success);
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.label {
+  font-size: 0.8125rem;
+  color: var(--pg-text-muted);
+}
+
+.sparkline {
+  margin-top: auto;
+}

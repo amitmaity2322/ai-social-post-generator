@@ -1,0 +1,83 @@
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.625rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.875rem 0.5rem;
+  border-radius: var(--pg-radius-sm);
+  border: 1px solid var(--pg-border);
+  background: var(--pg-surface);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--pg-text-muted);
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.option i {
+  font-size: 1.25rem;
+}
+
+.option:hover {
+  border-color: var(--pg-primary);
+  color: var(--pg-primary);
+}
+
+.optionSelected {
+  border-color: var(--pg-primary);
+  background: var(--pg-primary-light);
+  color: var(--pg-primary-dark);
+}
+
+.optionLocked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.optionLocked:hover {
+  border-color: var(--pg-border);
+  color: var(--pg-text-muted);
+}
+
+.lockIcon {
+  position: absolute;
+  top: 0.375rem;
+  right: 0.5rem;
+  font-size: 0.75rem !important;
+  color: var(--pg-text-muted);
+}
+
+.upgradeHint {
+  margin: -0.5rem 0 1rem;
+  font-size: 0.8125rem;
+  color: var(--pg-text-muted);
+}
+
+.upgradeHint a {
+  color: var(--pg-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
